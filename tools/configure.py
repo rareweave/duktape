@@ -438,7 +438,7 @@ def main():
         'duk_fltunion.h',
         'duk_forwdecl.h',
         'duk_gas.h',
-        'duk_gas.c'        
+        'duk_gas.c',        
         'duk_harray.h',
         'duk_hboundfunc.h',
         'duk_hbuffer_alloc.c',
