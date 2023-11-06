@@ -137,7 +137,7 @@
  * for reasonable execution timeout checking but large enough to keep
  * impact on execution performance low.
  */
-#if defined(DUK_USE_INTERRUPT_COUNTER)
+#if (defined(DUK_USE_INTERRUPT_COUNTER) && !defined(DUK_HTHREAD_INTCTR_DEFAULT))
 #define DUK_HTHREAD_INTCTR_DEFAULT 1
 #endif
 
