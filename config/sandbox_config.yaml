@@ -12,7 +12,7 @@ DUK_USE_PARANOID_ERRORS: true
 DUK_USE_INTERRUPT_COUNTER: true
 DUK_HTHREAD_INTCTR_DEFAULT: 1
 DUK_USE_INTERRUPT_COUNTER: true
-DUK_USE_FATAL_HANDLER: int fatal_handler(void *udata, const char *msg)
+DUK_USE_FATAL_HANDLER: false
 DUK_USE_PANIC_ABORT: false
 
 # Consider to reduce code footprint at the expense of less safeguards against
