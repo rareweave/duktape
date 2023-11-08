@@ -6,7 +6,7 @@
  *  comments.  Other parts of the header are Duktape internal and related to
  *  e.g. platform/compiler/feature detection.
  *
- *  Git commit cd50c7915dbed4a335cae9f8e67f4b702d9609c9 (cd50c79-dirty).
+ *  Git commit 4b903220d5891899b904a61ac1537384a321f54d (4b90322-dirty).
  *  Git branch main.
  *
  *  See Duktape AUTHORS.rst and LICENSE.txt for copyright and
@@ -189,8 +189,8 @@
  * which Duktape snapshot was used.  Not available in the ECMAScript
  * environment.
  */
-#define DUK_GIT_COMMIT                    "cd50c7915dbed4a335cae9f8e67f4b702d9609c9"
-#define DUK_GIT_DESCRIBE                  "cd50c79-dirty"
+#define DUK_GIT_COMMIT                    "4b903220d5891899b904a61ac1537384a321f54d"
+#define DUK_GIT_DESCRIBE                  "4b90322-dirty"
 #define DUK_GIT_BRANCH                    "main"
 
 /* External duk_config.h provides platform/compiler/OS dependent
@@ -1359,6 +1359,12 @@ typedef struct
 	size_t gas_used;
 	size_t mem_cost_per_byte;
 } GasData;
+typedef struct
+{
+	GasData *gasConfig;
+	void *napi_env;
+	void (*fatal_function)(void *udata, const char *msg);
+} HeapConfig;
 DUK_EXTERNAL_DECL void *duk_gas_respecting_alloc_function(void *udata, duk_size_t size);
 DUK_EXTERNAL_DECL void *duk_gas_respecting_realloc_function(void *udata, void *ptr, duk_size_t size);
 DUK_EXTERNAL_DECL void duk_gas_respecting_free_function(void *udata, void *ptr);

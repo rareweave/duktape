@@ -1215,6 +1215,12 @@ typedef struct
 	size_t gas_used;
 	size_t mem_cost_per_byte;
 } GasData;
+typedef struct
+{
+	GasData *gasConfig;
+	void *napi_env;
+	void (*fatal_function)(void *udata, const char *msg);
+} HeapConfig;
 DUK_EXTERNAL_DECL void *duk_gas_respecting_alloc_function(void *udata, duk_size_t size);
 DUK_EXTERNAL_DECL void *duk_gas_respecting_realloc_function(void *udata, void *ptr, duk_size_t size);
 DUK_EXTERNAL_DECL void duk_gas_respecting_free_function(void *udata, void *ptr);

@@ -6,7 +6,8 @@
 
 void *duk_gas_respecting_alloc_function(void *udata, duk_size_t size)
 {
-    GasData *gasData = (GasData *)udata;
+    HeapConfig *heapData = (HeapConfig *)udata;
+    GasData *gasData = heapData->gasConfig;
     size_t cost = size * gasData->mem_cost_per_byte;
     gasData->gas_used += cost;
 
@@ -20,7 +21,8 @@ void *duk_gas_respecting_alloc_function(void *udata, duk_size_t size)
 
 void *duk_gas_respecting_realloc_function(void *udata, void *ptr, duk_size_t size)
 {
-    GasData *gasData = (GasData *)udata;
+    HeapConfig *heapData = (HeapConfig *)udata;
+    GasData *gasData = heapData->gasConfig;
     size_t cost = size * gasData->mem_cost_per_byte;
     gasData->gas_used += cost;
 
@@ -39,7 +41,8 @@ void duk_gas_respecting_free_function(void *udata, void *ptr)
 
 duk_bool_t duk_check_gas(void *udata)
 {
-    GasData *gasData = (GasData *)udata;
+    HeapConfig *heapData = (HeapConfig *)udata;
+    GasData *gasData = heapData->gasConfig;
     gasData->gas_used++;
     if (gasData->gas_used > gasData->gas_limit)
     {
