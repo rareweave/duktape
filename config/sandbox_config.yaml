@@ -30,6 +30,7 @@ DUK_USE_FINALIZER_SUPPORT: true
 
 # ES2015 Proxy has about 2kB footprint.
 DUK_USE_ES6_PROXY: false
+DUK_USE_ES6: false
 
 # Don't support non-BMP characters in source code (UTF-8 otherwise OK).
 DUK_USE_SOURCE_NONBMP: true
@@ -53,3 +54,4 @@ DUK_USE_REFLECT_BUILTIN: false
 DUK_USE_JSON_SUPPORT: true
 DUK_USE_CBOR_SUPPORT: false
 DUK_USE_CBOR_BUILTIN: false
+DUK_USE_PERFORMANCE_BUILTIN: false
