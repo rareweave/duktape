@@ -1218,13 +1218,15 @@ typedef struct
 typedef struct
 {
 	GasData *gasConfig;
-	void *napi_env;
+	void *ctx;
 	void (*fatal_function)(void *udata, const char *msg);
 } HeapConfig;
 DUK_EXTERNAL_DECL void *duk_gas_respecting_alloc_function(void *udata, duk_size_t size);
 DUK_EXTERNAL_DECL void *duk_gas_respecting_realloc_function(void *udata, void *ptr, duk_size_t size);
 DUK_EXTERNAL_DECL void duk_gas_respecting_free_function(void *udata, void *ptr);
-DUK_EXTERNAL_DECL duk_bool_t duk_check_gas(void *udata);
+DUK_EXTERNAL_DECL GasData *duk_get_gas_info(duk_context * ctx);
+DUK_EXTERNAL_DECL duk_bool_t
+duk_check_gas(void *udata);
 
 /*
  *  Date provider related constants

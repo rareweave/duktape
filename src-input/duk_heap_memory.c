@@ -61,6 +61,9 @@ DUK_LOCAL DUK_NOINLINE_PERF DUK_COLD void *duk__heap_mem_alloc_slowpath(duk_heap
 			                 (long) (i + 1),
 			                 (long) size));
 			return res;
+		}else{
+			heap->fatal_func(heap->heap_udata, "Failed to allocate memory");
+			// return NULL;
 		}
 	}
 
@@ -99,8 +102,14 @@ DUK_INTERNAL DUK_INLINE_PERF DUK_HOT void *duk_heap_mem_alloc(duk_heap *heap, du
 	 * instead.  This reduces size of inlined code.
 	 */
 	res = heap->alloc_func(heap->heap_udata, size);
+
 	if (DUK_LIKELY(res != NULL)) {
 		return res;
+	}
+	else if (res == NULL)
+	{
+		heap->fatal_func(heap->heap_udata, "Failed to allocate memory");
+		return NULL;
 	}
 
 slowpath:

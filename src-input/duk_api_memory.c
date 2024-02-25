@@ -7,7 +7,13 @@
 DUK_EXTERNAL void *duk_alloc_raw(duk_hthread *thr, duk_size_t size) {
 	DUK_ASSERT_API_ENTRY(thr);
 
-	return DUK_ALLOC_RAW(thr->heap, size);
+	void *allocRes=DUK_ALLOC_RAW(thr->heap, size);
+	if(allocRes==NULL){
+		thr->heap->fatal_func(thr->heap->heap_udata, "Failed to allocate memory, likely due to out of gas");
+		
+		return NULL;
+	}
+	return allocRes;
 }
 
 DUK_EXTERNAL void duk_free_raw(duk_hthread *thr, void *ptr) {
