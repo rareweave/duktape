@@ -2906,7 +2906,6 @@ typedef struct duk_hthread duk_context;
 #undef DUK_USE_DATE_BUILTIN
 #undef DUK_USE_DUKTAPE_BUILTIN
 #define DUK_USE_ENCODING_BUILTINS
-#undef DUK_USE_ES6
 #undef DUK_USE_ES6_PROXY
 #undef DUK_USE_FATAL_HANDLER
 #define DUK_USE_FINALIZER_SUPPORT
